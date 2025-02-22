@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 import api from "../utils/api";
 import { getAccessToken, logout } from "../utils/auth";
-import { useRouter } from "next/router";
 
 interface Switch {
   id: number;
@@ -25,8 +25,13 @@ const Dashboard = () => {
         router.push("/login");
       }
     };
-    fetchSwitches();
-  }, []);
+
+    if (getAccessToken()) {
+      fetchSwitches();
+    } else {
+      router.push("/login");
+    }
+  }, [router]); // ✅ Added 'router' to the dependency array
 
   const toggleSwitch = async (id: number) => {
     try {
