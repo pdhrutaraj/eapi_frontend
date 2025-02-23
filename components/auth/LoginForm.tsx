@@ -19,6 +19,7 @@ const LoginForm = () => {
       toast.success("Login successful!");
       router.push("/dashboard");
     } catch (error) {
+      console.error("Error fetching switches:", error);
       toast.error("Invalid credentials!");
     }
   };
