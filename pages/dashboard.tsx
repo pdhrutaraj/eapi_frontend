@@ -21,6 +21,7 @@ const Dashboard = () => {
         });
         setSwitches(response.data);
       } catch (error) {
+	console.error("Error fetching switches:", error);  // Use the error here
         logout();
         router.push("/login");
       }
@@ -42,6 +43,7 @@ const Dashboard = () => {
       });
       setSwitches((prev) => prev.map((sw) => (sw.id === id ? { ...sw, state: updatedState } : sw)));
     } catch (error) {
+      console.error("Error fetching switches:", error);  // Use the error here
       alert("Failed to update switch");
     }
   };

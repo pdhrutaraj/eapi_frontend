@@ -17,6 +17,7 @@ const Register = () => {
       toast.success("Account created!");
       router.push("/login");
     } catch (error) {
+      console.error("Error fetching switches:", error);  // Use the error here
       toast.error("Registration failed!");
     }
   };
