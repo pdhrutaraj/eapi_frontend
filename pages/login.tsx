@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useRouter } from "next/router";
 import api from "../utils/api";
 import { storeTokens } from "../utils/auth";
+import { AxiosError } from "axios"; // Import AxiosError
 
 const Login = () => {
   const [username, setUsername] = useState("");
@@ -13,11 +14,18 @@ const Login = () => {
     const response = await api.post("token/", { username, password });
     console.log("Login success:", response.data); // Debugging
     storeTokens(response.data.access, response.data.refresh);
+    try {
     router.push("/dashboard");
+} 
   } catch (error) {
+  const axiosError = error as AxiosError; // Typecast to AxiosError
+  console.error("Login failed:", axiosError.response?.data || axiosError.message);
+  alert("Login failed: " + (axiosError.response?.data?.detail || "Unknown error"));
+}
+  /*catch (error) {
     console.error("Login failed:", error.response?.data || error.message);
     alert("Login failed: " + (error.response?.data?.detail || "Unknown error"));
-  }
+  }*/
 };
 
 /*
