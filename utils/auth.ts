@@ -1,6 +1,6 @@
 //import jwtDecode from "jwt-decode";
 import { useRouter } from "next/router";
-import { jwtDecode } from "jwtDecode";
+import { jwtDecode } from "jwt-decode";
 export const storeTokens = (access: string, refresh: string) => {
   localStorage.setItem("access", access);
   localStorage.setItem("refresh", refresh);
