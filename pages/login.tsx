@@ -15,8 +15,7 @@ const Login = () => {
     console.log("Login success:", response.data); // Debugging
     storeTokens(response.data.access, response.data.refresh);
     try {
-    router.push("/dashboard");
-} 
+    router.push("/dashboard"); 
   } catch (error) {
   const axiosError = error as AxiosError; // Typecast to AxiosError
   console.error("Login failed:", axiosError.response?.data || axiosError.message);
