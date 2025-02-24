@@ -33,7 +33,7 @@ const handleLogin = async (e: React.FormEvent) => {
   } catch (error) {
   const axiosError = error as AxiosError; // Typecast to AxiosError
   console.error("Login failed:", axiosError.response?.data || axiosError.message);
-  alert("Login failed: " + (axiosError.response?.data?.detail || "Unknown error"));
+  //alert("Login failed: " + (axiosError.response?.data?.detail || "Unknown error"));
 }
   /*catch (error: any) {
     console.error("Login error:", error.response ? error.response.data : error.message);
